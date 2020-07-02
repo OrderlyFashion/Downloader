@@ -16,7 +16,7 @@ namespace Downloader.Converters
 
             return downloadStatus switch
             {
-                DownloadStatus.Running => Color.White,
+                DownloadStatus.Running => Color.Green,
                 DownloadStatus.Paused => Color.FromHex("#FCFFA8"),
                 DownloadStatus.Pending => Color.FromHex("#FCFFA8"),
                 DownloadStatus.Successful => Color.FromHex("#80FF80"),

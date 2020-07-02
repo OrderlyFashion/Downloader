@@ -15,5 +15,6 @@ namespace Downloader.Models.Download
 		public long TotalBytes { get; }
 
 		public long DownloadedBytes { get; }
+		public double PercentDownloaded { set; get; }
 	}
 }

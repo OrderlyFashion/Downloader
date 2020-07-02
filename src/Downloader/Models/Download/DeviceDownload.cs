@@ -16,6 +16,7 @@ namespace Downloader.Models.Download
 			DownloadLocation = downloadLocation;
 			TotalBytes = totalBytes;
 			DownloadedBytes = downloadedBytes;
+			PercentDownloaded = DownloadedBytes == -1? 0f : (double)DownloadedBytes / TotalBytes;
 		}
 
 		public string Id { get; }
@@ -31,5 +32,6 @@ namespace Downloader.Models.Download
 		public long TotalBytes { get; set; }
 
 		public long DownloadedBytes { get; set; }
-	}
+        public double PercentDownloaded { get ; set ; }
+    }
 }

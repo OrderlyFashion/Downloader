@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:local="clr-namespace:Downloader.Converters"
              mc:Ignorable="d"
+             xmlns:ViewMoldes="clr-namespace:Downloader.ViewModels"
              x:Class="Downloader.Views.DownloadsPage">
 
 	<ContentPage.Resources>
@@ -12,26 +13,28 @@
 			<local:DownloadStatusToColorConverter x:Key="downloadStatusToColor" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
-
+   
 	<RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
-		<ListView x:Name="DownloadsListView" SelectionMode="None" ItemsSource="{Binding Downloads}" RowHeight="70">
+		<ListView x:Name="DownloadsListView"                        
+                  ItemsSource="{Binding Downloads}" 
+                  RowHeight="70">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<ViewCell>
-						<StackLayout Padding="10" BackgroundColor="{Binding DownloadStatus, Converter={StaticResource downloadStatusToColor}}">
-							<Label Text="{Binding Name}"
-								   d:Text="{Binding .}"
+                    <ViewCell Height="100">
+                        <StackLayout Padding="10" BackgroundColor="{Binding DownloadStatus, Converter={StaticResource downloadStatusToColor}}">
+                            <Label Text="{Binding Name}"		  
 								   LineBreakMode="NoWrap"
 								   Style="{DynamicResource ListItemTextStyle}"
 								   FontSize="16" />
-							<Grid Grid.Row="0" Grid.Column="0" Padding="10,0,10,0">
-								<ProgressBar BackgroundColor="Transparent"  Progress="{Binding PercentDownloaded}" HorizontalOptions="FillAndExpand" HeightRequest="20">
-								</ProgressBar>
-								<Label Text="{Binding PercentString}" HorizontalTextAlignment="Center"></Label>
-							</Grid>
-						</StackLayout>
-					</ViewCell>
-				</DataTemplate>
+                            <Grid  Padding="10,0,10,0">
+                                <ProgressBar BackgroundColor="Transparent"  Progress="{Binding PercentDownloaded}" HorizontalOptions="FillAndExpand" HeightRequest="20">
+                                </ProgressBar>
+                                <Label Text="{Binding PercentString}" HorizontalTextAlignment="Center"></Label>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                  
+                </DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
 	</RefreshView>

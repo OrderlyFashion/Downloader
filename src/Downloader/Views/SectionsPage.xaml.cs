@@ -13,14 +13,15 @@ namespace Downloader.Views
 
 		public SectionsPage()
 		{
+			
 			InitializeComponent();
-
 			BindingContext = _viewModel = new NodeViewModel();
+
 		}
 
-		private void StartDownload(object sender, EventArgs e)
+		private async void StartDownload(object sender, EventArgs e)
 		{
-			_viewModel.RequestDownload();
+			await _viewModel.RequestDownload();
 		}
 	}
 }
